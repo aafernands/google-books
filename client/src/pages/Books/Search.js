@@ -1,35 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../../components/Jumbotron";
-import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
 function Search() {
 	// Setting our component's initial state
-	const [books, setBooks] = useState([]);
 	const [searchResult, setSearchResult] = useState([]);
 	const [bookTitle, setBookTitle] = useState("");
-
-	// Load all books and store them with setBooks
-	useEffect(() => {
-		loadBooks();
-	}, []);
-
-	// Loads all books and sets them to books
-	function loadBooks() {
-		API.getBooks()
-			.then((res) => setBooks(res.data))
-			.catch((err) => console.log(err));
-	}
-
-	// Deletes a book from the database with a given id, then reloads books from the db
-	function deleteBook(id) {
-		API.deleteBook(id)
-			.then((res) => loadBooks())
-			.catch((err) => console.log(err));
-	}
 
 	// Handles updating component state when the user types into the input field
 	function handleInputChange(event) {
@@ -44,27 +23,19 @@ function Search() {
 		event.preventDefault();
 		if (bookTitle) {
 			API.search(bookTitle)
-				.then(
-					(res) => {
-						const books = res.data.items.map((book) => {
-							console.log(book);
-							return {
-								title: book.volumeInfo.title,
-								author: book.volumeInfo.authors[0],
-								image: book.volumeInfo.imageLinks.smallThumbnail,
-								description: book.volumeInfo.description,
-								link: book.volumeInfo.infoLink,
-							};
-						});
-						setSearchResult(books);
-					}
-					// setFormObject({
-					// 	title: "",
-					// 	author: "",
-					// 	synopsis: "",
-					// })
-				)
-				// .then(() => loadBooks())
+				.then((res) => {
+					const books = res.data.items.map((book) => {
+						console.log(book);
+						return {
+							title: book.volumeInfo.title,
+							author: book.volumeInfo.authors[0],
+							image: book.volumeInfo.imageLinks.smallThumbnail,
+							description: book.volumeInfo.description,
+							link: book.volumeInfo.infoLink,
+						};
+					});
+					setSearchResult(books);
+				})
 				.catch((err) => console.log(err));
 		}
 	}
