@@ -70,7 +70,9 @@ function Search() {
 	}
 
 	const saveBook = (book) => {
-		console.log(book);
+		API.saveBook(book).then(() => {
+			alert("Book saved");
+		});
 	};
 
 	return (
