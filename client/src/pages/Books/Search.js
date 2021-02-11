@@ -9,6 +9,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 function Search() {
 	// Setting our component's initial state
 	const [books, setBooks] = useState([]);
+	const [searchResult, setSearchResult] = useState([]);
 	const [bookTitle, setBookTitle] = useState("");
 
 	// Load all books and store them with setBooks
@@ -43,18 +44,34 @@ function Search() {
 		event.preventDefault();
 		if (bookTitle) {
 			API.search(bookTitle)
-				.then((res) =>
-        console.log(res)
+				.then(
+					(res) => {
+						const books = res.data.items.map((book) => {
+							console.log(book);
+							return {
+								title: book.volumeInfo.title,
+								author: book.volumeInfo.authors[0],
+								image: book.volumeInfo.imageLinks.smallThumbnail,
+								description: book.volumeInfo.description,
+								link: book.volumeInfo.infoLink,
+							};
+						});
+						setSearchResult(books);
+					}
 					// setFormObject({
 					// 	title: "",
 					// 	author: "",
 					// 	synopsis: "",
 					// })
 				)
-				.then(() => loadBooks())
+				// .then(() => loadBooks())
 				.catch((err) => console.log(err));
 		}
 	}
+
+	const saveBook = (book) => {
+		console.log(book);
+	};
 
 	return (
 		<Container fluid>
@@ -63,7 +80,6 @@ function Search() {
 					<Jumbotron>
 						<h1>What Books Should I Read?</h1>
 					</Jumbotron>
-
 
 					<form>
 						<Input
@@ -76,33 +92,46 @@ function Search() {
 							Search
 						</FormBtn>
 					</form>
-
-
-
-          
 				</Col>
-				<Col size="md-6 sm-12">
+				<Col size="sm-12">
 					<Jumbotron>
-						<h1>Books On My List</h1>
+						<h1>Search Result</h1>
 					</Jumbotron>
-					{books.length ? (
-						<List>
-							{books.map((book) => {
-								return (
-									<ListItem key={book._id}>
-										<a href={"/books/" + book._id}>
-											<strong>
-												{book.title} by {book.author}
-											</strong>
-										</a>
-										<DeleteBtn onClick={() => deleteBook(book._id)} />
-									</ListItem>
-								);
-							})}
-						</List>
-					) : (
-						<h3>No Results to Display</h3>
-					)}
+					<List>
+						{searchResult.map((book) => {
+							return (
+								<ListItem key={book._id}>
+									<div>
+										<a href={"/books/" + book._id}></a>
+										<Row>
+											<Col size="sm-6">
+												<strong>
+													{book.title} by {book.author}
+												</strong>
+											</Col>
+											<Col size="sm-6">
+												<a href={book.link}>
+													<button className="btn btn-primary">View</button>
+												</a>
+												<button
+													className="btn btn-primary"
+													onClick={() => saveBook(book)}
+												>
+													Save
+												</button>
+											</Col>
+										</Row>
+										<Row>
+											<Col size="sm-3">
+												<img src={book.image} />
+											</Col>
+											<Col size="sm-9">{book.description}</Col>
+										</Row>
+									</div>
+								</ListItem>
+							);
+						})}
+					</List>
 				</Col>
 			</Row>
 		</Container>
