@@ -27,11 +27,16 @@ function Search() {
 					const books = res.data.items.map((book) => {
 						console.log(book);
 						return {
-							title: book.volumeInfo.title,
-							author: book.volumeInfo.authors[0],
-							image: book.volumeInfo.imageLinks.smallThumbnail,
-							description: book.volumeInfo.description,
-							link: book.volumeInfo.infoLink,
+							id: book.id,
+							title: book?.volumeInfo?.title,
+							author: book?.volumeInfo?.authors
+								? book?.volumeInfo?.authors[0]
+								: "",
+							image: book?.volumeInfo?.imageLinks
+								? book?.volumeInfo?.imageLinks.smallThumbnail
+								: "",
+							description: book?.volumeInfo?.description,
+							link: book?.volumeInfo?.infoLink,
 						};
 					});
 					setSearchResult(books);
@@ -45,6 +50,8 @@ function Search() {
 			alert("Book saved");
 		});
 	};
+
+	console.log("searchResult", searchResult);
 
 	return (
 		<Container fluid>
@@ -73,7 +80,7 @@ function Search() {
 					<List>
 						{searchResult.map((book) => {
 							return (
-								<ListItem key={book._id}>
+								<ListItem key={book.id}>
 									<div>
 										<a href={"/books/" + book._id}></a>
 										<Row>
