@@ -4,7 +4,7 @@
 ![GitHub license](https://img.shields.io/badge/Made%20by-%40aafernands-orange)
 
 Deployed Aplication:
-[Work out Tracker](https://alex-books-search-app.herokuapp.com/)
+[GOOGLE BOOKS SEARCH](https://alex-books-search-app.herokuapp.com/)
 
 | Table of Contents             |
 | ----------------------------- |
