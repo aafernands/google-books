@@ -10,14 +10,13 @@ Deployed Aplication:
 | ----------------------------- |
 | [Usage](#Usage)               |
 | [Tests](#Tests)               |
-| [Summary](#Summary)           |
 | [Questions](#Questions)       |
 | [Installation](#Installation) |
 | [License](#License)           |
 
 ## Project Description
 
-******FEFEFE
+This is a react-based Google Books Search app. This application comtains React components and utilize React lifecycle methods to query and display books based on user searches. It also uses Node, Express and MongoDB so that users can save books to review or purchase later.
 
 ## Installation
 
@@ -45,14 +44,9 @@ $ npm start
 
 ![GitHub license](https://img.shields.io/badge/tests-100%25-success)
 
-## Summary
-
-- Some of the resources used on this project was:
-
-  > [Bootstrap](https://getbootstrap.com/)<br /> [W3 Schools](https://www.w3schools.com/) <br/> [Express](https://www.npmjs.com/package/express)<br /> [Heroku](https://www.w3schools.com/)<br />
 
 - The final version was pushed to homework repository at:
-  > [github](https://github.com/aafernands/workout_tracker)<br/> [Heroku](https://alexworkouttracker.herokuapp.com/)
+  > [github](https://github.com/aafernands/workout_tracker)
 
 ## Questions?
 

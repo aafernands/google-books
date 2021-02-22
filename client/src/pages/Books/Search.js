@@ -58,7 +58,9 @@ function Search() {
 			<Row>
 				<Col size="md-12">
 					<Jumbotron>
-						<h1>What Books Should I Read?</h1>
+						<h1>Welcome to Google Book Search App!</h1>
+						<br></br>
+						<h4>"To start enter the desired book's title bellow"</h4>
 					</Jumbotron>
 
 					<form>
@@ -69,7 +71,7 @@ function Search() {
 							value={bookTitle}
 						/>
 						<FormBtn disabled={!bookTitle} onClick={handleFormSubmit}>
-							Search
+							Search 
 						</FormBtn>
 					</form>
 				</Col>
