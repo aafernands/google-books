@@ -20,7 +20,7 @@ This is a react-based Google Books Search app. This application comtains React c
 
 ## Installation
 
-Before runninf this application install the following commands on terminal:
+Before running this application install the following commands on terminal:
 
 ```bash
 $ npm install
@@ -38,15 +38,13 @@ $ npm start
 
 <br>
 
-![demo](./public/assets/images/demo.gif)
+![demo](./src/assets/demo/demo.gif)
 
 ## Tests
 
 ![GitHub license](https://img.shields.io/badge/tests-100%25-success)
-
-
 - The final version was pushed to homework repository at:
-  > [github](https://github.com/aafernands/workout_tracker)
+  > [Heroku](https://dashboard.heroku.com/apps/alex-books-search-app)
 
 ## Questions?
 
