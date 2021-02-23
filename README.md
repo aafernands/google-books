@@ -38,17 +38,16 @@ $ npm start
 
 <br>
 
-![demo](./src/assets/demo/demo.gif)
+![demo](./client/src/assets/images/demo/demo.gif)
 
 ## Tests
 
 ![GitHub license](https://img.shields.io/badge/tests-100%25-success)
-- The final version was pushed to homework repository at:
-  > [Heroku](https://dashboard.heroku.com/apps/alex-books-search-app)
+
 
 ## Questions?
 
-![alt text](./public/assets/images/alex.png)
+![alt text](./client/src/assets/images/demo/alex.png)
 
 Feel free to contact me for any question. I'd be more then happy to help.
 
